@@ -1,0 +1,43 @@
+* {
+    font-family: 'Roboto', cursive;}
+
+body {
+    background-color: black;
+}
+
+.canvas-container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.start {
+    background-image: url(../images/intro-bg.gif);
+    background-repeat: no-repeat;
+    background-size: 101%;
+    background-position: right;
+}
+
+canvas {
+    border: 1px solid rgba(250, 0, 0, 0.342);
+    
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+
+.btn {
+    font-size: larger;
+    margin-top: 30px;
+    border: none;
+    height: 50px;
+    width: 150px;
+}
+
+.btn:hover{
+    cursor: pointer;
+}
+
