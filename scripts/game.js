@@ -6,6 +6,7 @@ class Game {
         this.enemies = enemies;
         this.walls = walls;
         this.frameNumber = null;
+        this.enemyArmy = [];
     }
 
     start(){
@@ -18,16 +19,18 @@ class Game {
     }
 
     play(){
+        if (this.checkCollision()){
+            canvas.classList.remove("playing");
+            canvas.classList.add("gameOver");
+            btn.classList.add("tryAgain");
+            btn.classList.remove("hidden")
+            return};
         this.frameNumber += 1;
-        this.movePlayer();
         this.moveEnemies();
-        this.checkCollision();
         this.draw();
+        this.randomEnemy(this.frameNumber);
         requestAnimationFrame(this.play.bind(this));
-    }
-
-    movePlayer(){
-            
+        console.log(this.frameNumber)
     }
 
     moveEnemies(){
@@ -47,14 +50,30 @@ class Game {
     }
 
     gameOver(){
+
         this.stop();
+        
+        return;
     }
 
     checkCollision(){
-        if (player.x === enemies.x){
-            this.gameOver();
+        let crash = !(player.bottom() < enemies.top() || player.top() > enemies.bottom() || player.right() < enemies.left() || player.left() > enemies.right())
+        return crash;
+    } 
 
+    randomEnemy(frameNumber){
+        if (frameNumber % 120 === 0){
+            this.enemyArmy.push(new Enemies(ctx))
+        };
+        for (let i = 0; i < this.enemyArmy.length; i++){
+            this.enemyArmy[i].draw()
+            this.enemyArmy[i].move()
+            this.enemyArmy[i].top()
+            this.enemyArmy[i].left()
+            this.enemyArmy[i].bottom()
+            this.enemyArmy[i].right()
+        
+        console.log(this.enemyArmy)
         }
     }
-
 }

@@ -22,6 +22,10 @@ body {
     background-color: rosybrown;
 }
 
+.gameOver {
+    background-color: black;
+}
+
 canvas {
     border: 1px solid rgba(250, 0, 0, 0.342);
     
@@ -45,3 +49,15 @@ canvas {
     cursor: pointer;
 }
 
+.hidden {
+    visibility: hidden;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+}
+
+.tryAgain {
+    position: absolute;
+    top: 25%;
+    left: 50%; 
+}
