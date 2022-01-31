@@ -18,6 +18,10 @@ body {
     background-position: right;
 }
 
+.playing {
+    background-color: rosybrown;
+}
+
 canvas {
     border: 1px solid rgba(250, 0, 0, 0.342);
     
