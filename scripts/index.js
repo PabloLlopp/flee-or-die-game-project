@@ -7,11 +7,13 @@ const restartBtn = document.querySelector("button");
 canvas.height = 500
 canvas.width = 500
 
-//---------- AUDIO ----------
-/*
+//---------- MUSIC ----------
+
 const audio = new Audio('../music/tune.mp3')
 audio.play()
-*/
+
+const lose = new Audio('../music/lose.flac')
+
 
 // ---------- CLASSES ----------
 
@@ -54,7 +56,7 @@ const move = document.addEventListener(
                     player.y -= player.moveY
                 break;
             case 's':
-                if (player.y + player.height < canvas.height) 
+                if (player.y + player.height < canvas.height - 10) 
                     player.y += player.moveY
                 break;
             case 'a':
@@ -62,7 +64,7 @@ const move = document.addEventListener(
                     player.x -= player.moveX
                 break;
              case 'd':
-                if (player.x + player.width < canvas.width)
+                if (player.x + player.width < canvas.width - 10)
                     player.x = player.x + player.moveX
                 break;
         }
