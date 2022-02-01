@@ -46,28 +46,16 @@ restartBtn.onclick = ()=> {
     game.start();
 }
 
- 
+// ---------- PLAYER MOVEMENT ----------
+
+document.addEventListener('keydown', (e)=>{game.onKey(e)})
+document.addEventListener('keyup', ()=>{game.onKey(null)})
+
+/*
 const move = document.addEventListener(
     'keydown',
     (event)=>{
-        switch (event.key) {
-            case 'w':
-                if (player.y > 0)
-                    player.y -= player.moveY
-                break;
-            case 's':
-                if (player.y + player.height < canvas.height - 10) 
-                    player.y += player.moveY
-                break;
-            case 'a':
-                if (player.x > 0)
-                    player.x -= player.moveX
-                break;
-             case 'd':
-                if (player.x + player.width < canvas.width - 10)
-                    player.x = player.x + player.moveX
-                break;
-        }
+        
     })
 
-
+*/

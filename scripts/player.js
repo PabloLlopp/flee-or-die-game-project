@@ -32,4 +32,25 @@ class Player {
         return this.y + this.height;
     }
 
+    move(key){
+        switch (key) {
+            case 'w':
+                if (this.y > 0)
+                    this.y -= this.moveY
+                break;
+            case 's':
+                if (this.y + this.height < canvas.height - 10) 
+                    this.y += this.moveY
+                break;
+            case 'a':
+                if (this.x > 0)
+                    this.x -= this.moveX
+                break;
+             case 'd':
+                if (this.x + this.width < canvas.width - 10)
+                    this.x = this.x + this.moveX
+                break;
+        }
+    }
+
 }

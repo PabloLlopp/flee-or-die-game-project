@@ -3,6 +3,7 @@ class Enemies {
         this.ctx = ctx;
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
+        
         this.height = 15;
         this.width = 15;
         this.moveX = 1;
@@ -30,16 +31,16 @@ class Enemies {
 
     move(){  
         if (this.x > player.x){
-            this.x -= 1 }
+            this.x -= 3 }
             
         if (this.x < player.x){
-            this.x += 1 }
+            this.x += 3 }
 
         if (this.y < player.y){
-            this.y += 1}
+            this.y += 3}
 
         if (this.y > player.y){    
-            this.y -= 1 }
+            this.y -= 3 }
     }
 
     left() {
@@ -63,6 +64,5 @@ class Enemies {
         this.ctx.fillStyle = 'red'
         this.ctx.fillRect(this.x, this.y, this.width, this.height);  
     }
-
     
 }

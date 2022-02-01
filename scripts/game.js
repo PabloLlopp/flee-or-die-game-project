@@ -7,7 +7,7 @@ class Game {
         this.walls = walls;
         this.frameNumber = null;
         this.enemyArmy = [];
-        
+        this.key = null;
         this.score = 0;
     }
 
@@ -37,6 +37,7 @@ class Game {
             this.draw();
             this.drawScore();
             requestAnimationFrame(this.play.bind(this));
+            this.move();
         }
     }
 
@@ -45,8 +46,6 @@ class Game {
         walls.draw()
         player.draw();
         enemies.randomEnemy(this.frameNumber);
-        
-        
     }
 
     checkCollision(){
@@ -76,6 +75,15 @@ class Game {
         audio.pause()
         lose.play()
         return true;
+    }
+
+    onKey(event){
+        if (event) this.key = event.key
+        else this.key = null
+    }
+
+    move(){
+        this.player.move(this.key);
     }
   
 }
