@@ -4,8 +4,8 @@ class Enemies {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
         this.enemyArmy = [];
-        this.height = 15;
-        this.width = 15;
+        this.height = 20;
+        this.width = 20;
         this.moveX = 1;
         this.moveY = 1;
     }

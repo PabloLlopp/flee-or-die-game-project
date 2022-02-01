@@ -15,7 +15,7 @@ class Player {
         this.image.src = '../images/favicon.png'
     }
 
-    rotatione(){
+    playerRotation(){
         this.rotation = Math.atan2(-(this.x - mouse.x), -(mouse.y - this.y))
     }
 
@@ -49,7 +49,7 @@ class Player {
     }
 
     move(key){
-        this.rotatione();
+        this.playerRotation();
         switch (key) {
             case 'w':
                 if (this.y > 10)
