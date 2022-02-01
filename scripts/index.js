@@ -2,7 +2,7 @@ console.log('JS loaded')
 
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d')
-const btn = document.querySelector("button");
+const restartBtn = document.querySelector("button");
 
 canvas.height = 500
 canvas.width = 500
@@ -33,11 +33,14 @@ startBtn.onclick = ()=> {
     game.start();
 }
 
-btn.onclick = ()=> {
+restartBtn.onclick = ()=> {
     canvas.classList.remove("gameOver");
     canvas.classList.add("playing");
-    btn.remove();
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    //restartBtn.remove();
+    restartBtn.classList.add("hidden");
+    restartBtn.classList.remove("tryAgain")
+    ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+   // location.reload()
     game.start();
 }
 

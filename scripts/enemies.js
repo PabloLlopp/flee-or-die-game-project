@@ -1,24 +1,34 @@
 class Enemies {
     constructor(ctx){
         this.ctx = ctx;
-        this.x = 400;
-        this.y = 400;
-        this.height = 30;
-        this.width = 30;
+        this.x = Math.random() * canvas.width;
+        this.y =  Math.random() * canvas.height;
+        this.height = 10;
+        this.width = 10;
         this.moveX = 1;
         this.moveY = 1;
     }
 
-    create(){
+   randomEnemy(frameNumber){
+       if (frameNumber === 1) game.enemyArmy.push(new Enemies(ctx))
+        if (frameNumber % 180 === 0){
+            game.enemyArmy.push(new Enemies(ctx))
+        };
+        for (let i = 0; i < game.enemyArmy.length; i++){
+            game.enemyArmy[i].createEnemies();
+        }
+    }
+
+    createEnemies(){
         this.move();
+        this.draw();
         this.left();
         this.right();
         this.top();
         this.bottom();
     }
 
-    move(){
-        
+    move(){  
         if (this.x > player.x){
             this.x -= 1 }
             
@@ -30,7 +40,6 @@ class Enemies {
 
         if (this.y > player.y){    
             this.y -= 1 }
-        
     }
 
     left() {

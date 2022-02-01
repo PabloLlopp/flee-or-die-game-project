@@ -16,64 +16,44 @@ class Game {
 
     init(){
         this.frameNumber = 0;
+        this.enemyArmy = [];
+        player.x = 249 - player.width;
+        player.y = 249 - player.height;
     }
 
     play(){
-        if (this.checkCollision()){
-            canvas.classList.remove("playing");
-            canvas.classList.add("gameOver");
-            btn.classList.add("tryAgain");
-            btn.classList.remove("hidden")
-            return};
-        this.frameNumber += 1;
-        this.moveEnemies();
-        this.draw();
-        this.randomEnemy(this.frameNumber);
-        requestAnimationFrame(this.play.bind(this));
-        console.log(this.frameNumber)
-    }
-
-    moveEnemies(){
-        this.enemies.move(this.frameNumber);
+        if (this.frameNumber !== null){
+            this.frameNumber += 1;
+            this.checkCollision();
+            this.draw();
+            requestAnimationFrame(this.play.bind(this));
+        }
     }
 
     draw(){
         this.ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-        this.player.draw();
-        this.enemies.draw();
+        player.draw();
+        enemies.randomEnemy(this.frameNumber);
         this.walls.draw();
     }
 
-    stop(){
-        cancelAnimationFrame(this.frameNumber);
-        this.frameNumber = null;
-    }
-
-    gameOver(){
-
-        this.stop();
-        
-        return;
-    }
-
     checkCollision(){
-        let crash = !(player.bottom() < enemies.top() || player.top() > enemies.bottom() || player.right() < enemies.left() || player.left() > enemies.right())
-        return crash;
-    } 
-
-    randomEnemy(frameNumber){
-        if (frameNumber % 120 === 0){
-            this.enemyArmy.push(new Enemies(ctx))
-        };
-        for (let i = 0; i < this.enemyArmy.length; i++){
-            this.enemyArmy[i].draw()
-            this.enemyArmy[i].move()
-            this.enemyArmy[i].top()
-            this.enemyArmy[i].left()
-            this.enemyArmy[i].bottom()
-            this.enemyArmy[i].right()
-        
-        console.log(this.enemyArmy)
-        }
+        this.enemyArmy.forEach(enemy =>{
+            let crash = !(player.bottom() < enemy.top() || player.top() > enemy.bottom() || player.right() < enemy.left() || player.left() > enemy.right())
+            if (crash) this.stop();
+            } 
+        ) 
     }
+
+    stop(){
+        this.frameNumber = null;
+        cancelAnimationFrame(this.frameNumber);
+        this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
+        canvas.classList.remove("playing");
+        canvas.classList.add("gameOver");
+        restartBtn.classList.add("tryAgain");
+        restartBtn.classList.remove("hidden")
+        return true;
+    }
+  
 }
