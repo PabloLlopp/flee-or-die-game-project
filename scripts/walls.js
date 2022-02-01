@@ -8,8 +8,6 @@ class Walls {
     }
 
     addRandomWalls(){
-        //console.log("create wall", Math.random() * this.ctx.canvas.width,
-       // Math.random() * this.ctx.canvas.height)
         for (let i = 0; i < 10; i++){
             this.allWalls.push(
                 {

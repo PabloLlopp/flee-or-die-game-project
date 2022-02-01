@@ -7,7 +7,6 @@ class Player {
         this.width = 20;
         this.moveX = 10;
         this.moveY = 10;
-        this.rotNum = 1;
         this.playerSprite = new Image();
         this.playerSprite.src = "../images/player.png";
         this.rotation = 0;
@@ -69,7 +68,5 @@ class Player {
                 break;
         }
     }
-
     
-
 }

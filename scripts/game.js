@@ -16,7 +16,7 @@ class Game {
         this.init();
         this.play();
         audio.play();
-        audio.currentTime = 1.5
+        audio.currentTime = 1.5;
     }
 
     init(){
@@ -39,8 +39,6 @@ class Game {
             this.drawScore();
             requestAnimationFrame(this.play.bind(this));
             this.move();
-            console.log(this.score)
-            console.log(this.frameNumber)
         }
     }
 
@@ -49,6 +47,10 @@ class Game {
        // this.walls.draw()
         this.player.draw();
         this.enemies.randomEnemy(this.frameNumber);
+        if (this.flashlight.turnOnLight()){
+            this.flashlight.draw()
+        }
+        console.log(this.flashlight.turnOnLight())
     }
 
     checkCollision(){
@@ -87,7 +89,7 @@ class Game {
 
     move(){
         this.player.move(this.key);
-        
+        this.flashlight.move(this.key);
     }
   
 }

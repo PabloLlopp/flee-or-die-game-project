@@ -63,6 +63,7 @@ canvas.addEventListener('mousemove', (e)=>{
     mouse.x = e.clientX - test1;
     mouse.y = e.clientY - test2;
 })
+const click = document.addEventListener('click', ()=>{flashlight.turnOnLight()})
 
 
 
