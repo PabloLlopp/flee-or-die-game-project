@@ -6,9 +6,10 @@ class Game {
         this.enemies = enemies;
         this.walls = walls;
         this.frameNumber = null;
-        this.enemyArmy = [];
         this.key = null;
+        this.mouse = 
         this.score = 0;
+
     }
 
     start(){
@@ -20,12 +21,11 @@ class Game {
 
     init(){
         this.frameNumber = 0;
-        this.enemyArmy = [];
-        this.allWalls = [];
-        player.x = 249 - player.width;
-        player.y = 249 - player.height;
+        this.enemies.enemyArmy = [];
+        this.walls.allWalls = [];
+        this.player.x = 249 - this.player.width;
+        this.player.y = 249 - this.player.height;
         this.score = 0;
-        walls.allWalls = [];
         this.walls.addRandomWalls();
         
     }
@@ -33,23 +33,26 @@ class Game {
     play(){
         if (this.frameNumber !== null){
             this.frameNumber += 1;
+            this.score += this.frameNumber;
             this.checkCollision();
             this.draw();
             this.drawScore();
             requestAnimationFrame(this.play.bind(this));
             this.move();
+            console.log(this.score)
+            console.log(this.frameNumber)
         }
     }
 
     draw(){
         this.ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-        walls.draw()
-        player.draw();
-        enemies.randomEnemy(this.frameNumber);
+       // this.walls.draw()
+        this.player.draw();
+        this.enemies.randomEnemy(this.frameNumber);
     }
 
     checkCollision(){
-        this.enemyArmy.forEach(enemy =>{
+        this.enemies.enemyArmy.forEach(enemy =>{
             let crash = !(player.bottom() < enemy.top() || player.top() > enemy.bottom() || player.right() < enemy.left() || player.left() > enemy.right())
             if (crash) this.stop();
             } 
@@ -57,7 +60,7 @@ class Game {
     }
 
     drawScore() {
-        this.score = Math.floor(this.frameNumber / 5)
+        this.score = Math.floor(this.score / 5)
         this.ctx.save();
         this.ctx.fillStyle = "white";
         this.ctx.font = " bold 18px sans-serif";
@@ -84,6 +87,7 @@ class Game {
 
     move(){
         this.player.move(this.key);
+        
     }
   
 }

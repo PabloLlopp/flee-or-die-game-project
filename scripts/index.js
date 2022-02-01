@@ -48,8 +48,24 @@ restartBtn.onclick = ()=> {
 
 // ---------- PLAYER MOVEMENT ----------
 
+let mouse = {
+    x: 0,
+    y: 0
+}
+
+let test1 = canvas.getBoundingClientRect().left // review this in MOZILLA
+let test2 = canvas.getBoundingClientRect().top
+
+
 document.addEventListener('keydown', (e)=>{game.onKey(e)})
 document.addEventListener('keyup', ()=>{game.onKey(null)})
+canvas.addEventListener('mousemove', (e)=>{
+    mouse.x = e.clientX - test1;
+    mouse.y = e.clientY - test2;
+})
+
+
+
 
 /*
 const move = document.addEventListener(
