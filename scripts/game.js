@@ -9,6 +9,7 @@ class Game {
         this.key = null;
         this.mouse = 
         this.score = 0;
+        this.sum = 0
 
     }
 
@@ -26,8 +27,7 @@ class Game {
         this.player.x = 249 - this.player.width;
         this.player.y = 249 - this.player.height;
         this.score = 0;
-        this.walls.addRandomWalls();
-        
+       // this.walls.addRandomWalls();        
     }
 
     play(){
@@ -38,6 +38,7 @@ class Game {
             this.draw();
             this.drawScore();
             requestAnimationFrame(this.play.bind(this));
+            this.checkLightCollision();
             this.move();
         }
     }
@@ -50,15 +51,35 @@ class Game {
         if (this.flashlight.turnOnLight()){
             this.flashlight.draw()
         }
-        console.log(this.flashlight.turnOnLight())
     }
 
     checkCollision(){/*
         this.enemies.enemyArmy.forEach(enemy =>{
-            let crash = !(player.bottom() < enemy.top() || player.top() > enemy.bottom() || player.right() < enemy.left() || player.left() > enemy.right())
+            let crash = !(this.player.bottom() < enemy.top() || this.player.top() > enemy.bottom() || this.player.right() < enemy.left() || this.player.left() > enemy.right())
             if (crash) this.stop();
             } 
         ) */
+    }
+    
+    checkLightCollision(){
+        this.enemies.enemyArmy.forEach(enemy =>{
+            let enlighted = !(this.flashlight.bottom() < enemy.top() || this.flashlight.top() > enemy.bottom() || this.flashlight.right() < enemy.left() || this.flashlight.left() > enemy.right())
+            if (enlighted) {this.freeze() 
+               // console.log("NO MOVE")
+            }
+            else {this.enemies.enemyArmy.forEach(enemy =>{enemy.move()})
+                };
+            } 
+        )
+    }
+
+    freeze(){
+        
+        setInterval(() => {
+            this.enemies.moveX = 0
+            this.enemies.moveY = 0
+           // console.log("FREEZE", this.enemies.x, this.enemies.y)
+        }, 10 * 1000);
     }
 
     drawScore() {

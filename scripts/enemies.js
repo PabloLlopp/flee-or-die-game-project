@@ -6,22 +6,22 @@ class Enemies {
         this.enemyArmy = [];
         this.height = 20;
         this.width = 20;
-        this.moveX = 1;
-        this.moveY = 1;
+        this.moveX = 4;
+        this.moveY = 4;
     }
 
    randomEnemy(frameNumber){
        if (frameNumber === 1) this.enemyArmy.push(new Enemies(ctx))
-        if (frameNumber % 180 === 0){
+       /* if (frameNumber % 180 === 0){
             this.enemyArmy.push(new Enemies(ctx))
-        };
+        };*/
         for (let i = 0; i < this.enemyArmy.length; i++){
             this.enemyArmy[i].createEnemies();
         }
     }
 
     createEnemies(){
-        this.move();
+       // this.move();
         this.draw();
         this.left();
         this.right();
@@ -31,16 +31,16 @@ class Enemies {
 
     move(){  
         if (this.x > player.x){
-            this.x -= 4 }
+            this.x -= this.moveX }
             
         if (this.x < player.x){
-            this.x += 4 }
+            this.x += this.moveX }
 
         if (this.y < player.y){
-            this.y += 4}
+            this.y += this.moveY}
 
         if (this.y > player.y){    
-            this.y -= 4 }
+            this.y -= this.moveY }
     }
 
     left() {
