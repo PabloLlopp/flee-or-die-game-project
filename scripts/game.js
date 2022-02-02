@@ -53,12 +53,12 @@ class Game {
         console.log(this.flashlight.turnOnLight())
     }
 
-    checkCollision(){
+    checkCollision(){/*
         this.enemies.enemyArmy.forEach(enemy =>{
             let crash = !(player.bottom() < enemy.top() || player.top() > enemy.bottom() || player.right() < enemy.left() || player.left() > enemy.right())
             if (crash) this.stop();
             } 
-        ) 
+        ) */
     }
 
     drawScore() {
