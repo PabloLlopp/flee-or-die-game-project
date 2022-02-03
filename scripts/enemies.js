@@ -29,7 +29,6 @@ class Enemies {
         this.right();
         this.top();
         this.bottom();
-        console.log("SPEED:",this.moveX, "MOVE: ", this.x)
     }
 
     move(){  

@@ -1,5 +1,3 @@
-console.log('JS loaded')
-
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d')
 const restartBtn = document.querySelector("button");
@@ -26,12 +24,12 @@ const game = new Game(ctx, player, flashlight, enemies, walls);
 // ---------- START GAME ----------
 
 const startBtn = document.getElementById("start-btn")
-const insBtn = document.getElementById("ins-btn")
+
 startBtn.onclick = ()=> {
     canvas.classList.remove("start");
     canvas.classList.add("playing");
     startBtn.remove();
-    insBtn.remove();
+    
     game.start();
 }
 
