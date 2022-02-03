@@ -56,27 +56,22 @@ class Flashlight {
     move(key){
         this.lightRotation();
         
-            if (moveUp)
-                if (this.light[0].y > 10)
-                    this.light[0].y -= this.moveY
-            if (moveDown)
-                if (this.light[0].y + this.height < canvas.height) 
-                    this.light[0].y += this.moveY
+        if (moveUp)
+            if (this.light[0].y > 10)
+                this.light[0].y -= this.moveY
+        if (moveDown)
+            if (this.light[0].y + this.height < canvas.height) 
+                this.light[0].y += this.moveY
                 
-            if (moveLeft)
-                if (this.light[0].x > 10)
-                    this.light[0].x -= this.moveX
+        if (moveLeft)
+            if (this.light[0].x > 10)
+                this.light[0].x -= this.moveX
                 
-            if (moveRight)
-                if (this.light[0].x + this.width < canvas.width)
-                    this.light[0].x = this.light[0].x + this.moveX
+        if (moveRight)
+            if (this.light[0].x + this.width < canvas.width)
+                this.light[0].x = this.light[0].x + this.moveX
                 
-        }
-
-        
-
-
-    
+    }
 
     left() {
         return this.light[0].x ;
