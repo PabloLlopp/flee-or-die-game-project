@@ -12,14 +12,14 @@ body {
 }
 
 .start {
-    background-image: url(/images/intro-bg.gif);
+    background-image: url(../images/intro-bg.gif);
     background-repeat: no-repeat;
     background-size: 101%;
     background-position: right;
 }
 
 .playing {
-   background-image: url(/images/floor.png);
+   background-image: url(../images/floor.png);
     background-color: white;
     cursor: none;
 }
