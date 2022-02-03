@@ -10,7 +10,7 @@ class Game {
         this.mouse = 
         this.score = 0;
         this.sum = 0
-
+        this.playerMotion = [];
     }
 
     start(){
@@ -23,10 +23,14 @@ class Game {
     init(){
         this.frameNumber = 0;
         this.enemies.enemyArmy = [];
-        this.walls.allWalls = [];
+        this.flashlight.light = [];
         this.player.x = 249 - this.player.width;
         this.player.y = 249 - this.player.height;
         this.score = 0;
+        this.flashlight.x = this.player.x;
+        this.flashlight.y = this.player.y;
+        this.flashlight.rotation = 0;
+
        // this.walls.addRandomWalls();        
     }
 
@@ -39,6 +43,8 @@ class Game {
             this.drawScore();
             requestAnimationFrame(this.play.bind(this));
             this.checkLightCollision();
+            this.player.controlMotion();
+            if (this.frameNumber % 180 === 0) this.checkIfPlayerMoves();
             this.move();
         }
     }
@@ -53,12 +59,18 @@ class Game {
         }
     }
 
-    checkCollision(){/*
+    checkIfPlayerMoves(){/*
+        if (this.playerMotion[0].x === this.playerMotion[1].x && this.playerMotion[0].y === this.playerMotion[1].y){
+            this.stop()
+        } else this.playerMotion[0].shift()*/
+    }
+
+    checkCollision(){
         this.enemies.enemyArmy.forEach(enemy =>{
             let crash = !(this.player.bottom() < enemy.top() || this.player.top() > enemy.bottom() || this.player.right() < enemy.left() || this.player.left() > enemy.right())
             if (crash) this.stop();
             } 
-        ) */
+        ) 
     }
     
     checkLightCollision(){
@@ -67,9 +79,9 @@ class Game {
             if (enlighted) {this.freeze() 
                // console.log("NO MOVE")
             }
-            else {this.enemies.enemyArmy.forEach(enemy =>{enemy.move()})
-                };
-            } 
+            else {enemy.move()}
+        }
+             
         )
     }
 

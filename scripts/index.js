@@ -9,10 +9,10 @@ canvas.width = 500
 
 //---------- MUSIC ----------
 
-const audio = new Audio('../music/tune.mp3')
+const audio = new Audio('music/tune.mp3')
 audio.play()
 
-const lose = new Audio('../music/lose.flac')
+const lose = new Audio('music/lose.wav')
 
 
 // ---------- CLASSES ----------
@@ -64,15 +64,3 @@ canvas.addEventListener('mousemove', (e)=>{
     mouse.y = e.clientY - test2;
 })
 const click = document.addEventListener('click', ()=>{flashlight.turnOnLight()})
-
-
-
-
-/*
-const move = document.addEventListener(
-    'keydown',
-    (event)=>{
-        
-    })
-
-*/

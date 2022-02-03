@@ -4,17 +4,19 @@ class Enemies {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
         this.enemyArmy = [];
-        this.height = 20;
-        this.width = 20;
-        this.moveX = 4;
-        this.moveY = 4;
+        this.height = 30;
+        this.width = 30;
+        this.moveX = Math.random() * 4;
+        this.moveY = Math.random() * 4;
+        this.image = new Image ();
+        this.image.src = 'images/enemies.png'
     }
 
    randomEnemy(frameNumber){
        if (frameNumber === 1) this.enemyArmy.push(new Enemies(ctx))
-       /* if (frameNumber % 180 === 0){
+        if (frameNumber % 180 === 0){
             this.enemyArmy.push(new Enemies(ctx))
-        };*/
+        };
         for (let i = 0; i < this.enemyArmy.length; i++){
             this.enemyArmy[i].createEnemies();
         }
@@ -27,6 +29,7 @@ class Enemies {
         this.right();
         this.top();
         this.bottom();
+        console.log("SPEED:",this.moveX, "MOVE: ", this.x)
     }
 
     move(){  
@@ -62,7 +65,7 @@ class Enemies {
 
     draw(){
         this.ctx.fillStyle = 'red'
-        this.ctx.fillRect(this.x, this.y, this.width, this.height);  
+        this.ctx.drawImage(this.image, this.x, this.y, this.width, this.height)
     }
     
 }

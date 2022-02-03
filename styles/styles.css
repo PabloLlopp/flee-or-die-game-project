@@ -12,14 +12,16 @@ body {
 }
 
 .start {
-    background-image: url(../images/intro-bg.gif);
+    background-image: url(/images/intro-bg.gif);
     background-repeat: no-repeat;
     background-size: 101%;
     background-position: right;
 }
 
 .playing {
-    background-color: rosybrown;
+   background-image: url(/images/floor.png);
+    background-color: white;
+    cursor: none;
 }
 
 .gameOver {
@@ -28,7 +30,7 @@ body {
 
 canvas {
     border: 1px solid black;
-    cursor: none;
+    
 }
 
 .btn-container {

@@ -8,14 +8,12 @@ class Player {
         this.moveX = 10;
         this.moveY = 10;
         this.playerSprite = new Image();
-        this.playerSprite.src = "../images/player.png";
+        this.playerSprite.src = '';
         this.rotation = 0;
         this.image = new Image ();
-        this.image.src = '../images/favicon.png'
-    }
-
-    playerRotation(){
-        this.rotation = Math.atan2(-(this.x - mouse.x), -(mouse.y - this.y))
+        this.image.src = 'images/player.png'
+        this.oldX = 0;
+        this.oldY = 0;
     }
 
     draw(){ 
@@ -47,8 +45,19 @@ class Player {
         return this.y + this.height;
     }
 
+    controlMotion(){
+        if (game.frameNumber % 180 === 0){
+            if (this.oldX === this.x && this.oldY === this.y) game.stop()
+            else {
+                this.oldX = this.x; 
+                this.oldY = this.y;
+            }            
+        }
+    }
+
     move(key){
         this.playerRotation();
+
         switch (key) {
             case 'w':
                 if (this.y > 10)
@@ -67,6 +76,10 @@ class Player {
                     this.x = this.x + this.moveX
                 break;
         }
+    }
+
+    playerRotation(){
+        this.rotation = Math.atan2(-(this.x - mouse.x), -(mouse.y - this.y))
     }
     
 }

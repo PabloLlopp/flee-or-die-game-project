@@ -3,15 +3,15 @@ class Flashlight {
         this.ctx = ctx;
         this.light = [];
         this.width = 10;
-        this.height = 30;
+        this.height = 10;
         this.player = player;
         this.rotation = 0;
         this.moveX = 10;
         this.moveY = 10;
         this.lightOn = new Image();
-        this.lightOn.src = '../images/flashlight-on.png'
+        this.lightOn.src = 'images/flashlight-on.png'
         this.lightOff = new Image();
-        this.lightOff.src = '../images/flashlight-off.png'
+        this.lightOff.src = 'images/flashlight-off.png'
     }
 
     turnOnLight(){
@@ -37,7 +37,7 @@ class Flashlight {
             this.ctx.rotate(this.rotation)
             this.ctx.drawImage(this.lightOn, -this.lightOn.width / 2 , -this.lightOn.height + 20 )
             this.ctx.restore();
-        } else {
+        }/* else {
             this.ctx.save();
             this.ctx.translate(
                 this.light[0].x, this.light[0].y
@@ -45,12 +45,12 @@ class Flashlight {
             this.ctx.rotate(this.rotation)
             this.ctx.drawImage(this.lightOff, -this.lightOff.width / 2 , -this.lightOff.height + 20 )
             this.ctx.restore();
-        }
+        }*/
     }
 
     lightRotation(){
         this.rotation = Math.atan2(-(this.player.x - mouse.x), ( this.player.y - mouse.y))
-        console.log(this.rotation)
+        //console.log(this.rotation)
     }
 
     move(key){
@@ -80,7 +80,7 @@ class Flashlight {
     }
 
     right() {
-        return this.light[0].x + this.width + 50 * this.rotation;
+        return this.light[0].x + this.width + 43 * this.rotation;
     }
 
     top() {
@@ -88,7 +88,7 @@ class Flashlight {
     }
 
     bottom() {
-        return this.light[0].y + this.height + 50*this.rotation;
+        return this.light[0].y + this.height + 43 * this.rotation;
     }
 
 }
