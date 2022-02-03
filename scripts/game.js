@@ -53,15 +53,20 @@ class Game {
     if (this.flashlight.turnOnLight()) {
         this.flashlight.draw();
       }
-    this.enemies.randomEnemy(this.frameNumber);
+    this.enemies.generateEnemyPeriodically(this.frameNumber);
   }
 
   drawScore() {
     this.score = Math.floor(this.score / 5);
     this.ctx.save();
     this.ctx.fillStyle = "white";
-    this.ctx.font = " bold 18px sans-serif";
+    this.ctx.font = " bold 18px Supermercado One";
     this.ctx.fillText(`Score: ${this.score} pts`, 20, 20);
+  }
+
+  move() {
+    this.player.move(this.key);
+    this.flashlight.move(this.key);
   }
 
   checkCollision() {
@@ -107,11 +112,6 @@ class Game {
     audio.pause();
     lose.play();
     return true;
-  }
-
-  move() {
-    this.player.move(this.key);
-    this.flashlight.move(this.key);
   }
   
 }

@@ -71,10 +71,10 @@ class Player {
     if (moveRight)
       if (this.x + this.width < canvas.width) this.x = this.x + this.moveX;
 
-    this.playerRotation();
+    this.rotatePlayer();
   }
 
-  playerRotation() {
+  rotatePlayer() {
     this.rotation = Math.atan2(-(this.x - mouse.x), -(mouse.y - this.y));
   }
 }

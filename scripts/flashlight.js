@@ -54,10 +54,10 @@ class Flashlight {
       if (this.light[0].x + this.width < canvas.width)
         this.light[0].x = this.light[0].x + this.moveX;
 
-    this.lightRotation();
+    this.rotateLight();
   }
 
-  lightRotation() {
+  rotateLight() {
     this.rotation = Math.atan2(
       -(this.player.x - mouse.x),
       this.player.y - mouse.y

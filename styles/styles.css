@@ -6,6 +6,10 @@ body {
   background-color: black;
 }
 
+canvas {
+    border: 1px solid black;
+  }
+
 .canvas-container {
   margin-top: 50px;
   display: flex;
@@ -27,10 +31,6 @@ body {
 
 .gameOver {
   background-color: black;
-}
-
-canvas {
-  border: 1px solid black;
 }
 
 .btn-container {

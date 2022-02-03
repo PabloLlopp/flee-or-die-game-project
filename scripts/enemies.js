@@ -1,9 +1,9 @@
 class Enemies {
   constructor(ctx) {
     this.ctx = ctx;
+    this.enemyArmy = [];
     this.x = Math.random() * canvas.width;
     this.y = Math.random() * canvas.height;
-    this.enemyArmy = [];
     this.height = 30;
     this.width = 30;
     this.moveX = Math.random() * 4;
@@ -12,7 +12,7 @@ class Enemies {
     this.image.src = "images/enemies.png";
   }
 
-  randomEnemy(frameNumber) {
+  generateEnemyPeriodically(frameNumber) {
     if (frameNumber === 1) this.enemyArmy.push(new Enemies(ctx));
     if (frameNumber % 180 === 0) {
       this.enemyArmy.push(new Enemies(ctx));
