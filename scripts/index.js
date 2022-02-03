@@ -29,7 +29,6 @@ startBtn.onclick = ()=> {
     canvas.classList.remove("start");
     canvas.classList.add("playing");
     startBtn.remove();
-    
     game.start();
 }
 
