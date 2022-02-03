@@ -53,9 +53,48 @@ let mouse = {
 let test1 = canvas.getBoundingClientRect().left // review this in MOZILLA
 let test2 = canvas.getBoundingClientRect().top
 
+let moveUp = false;
+let moveDown = false;
+let moveLeft = false;
+let moveRight = false;
 
-document.addEventListener('keydown', (e)=>{game.onKey(e)})
-document.addEventListener('keyup', ()=>{game.onKey(null)})
+
+document.addEventListener('keydown', 
+    (key)=>{switch (key.key) {
+        case 'w':
+            moveUp = true
+            break;
+        case 's':
+            moveDown = true
+            break;
+        case 'a':
+            moveLeft = true
+            break;
+        case 'd':
+            moveRight = true
+            break;
+        }
+    }
+)
+
+document.addEventListener('keyup', 
+    (key)=>{switch (key.key) {
+        case 'w':
+            moveUp = false
+            break;
+        case 's':
+            moveDown = false
+            break;
+        case 'a':
+            moveLeft = false
+            break;
+        case 'd':
+            moveRight = false
+            break;
+        }
+    }
+)
+
 canvas.addEventListener('mousemove', (e)=>{
     mouse.x = e.clientX - test1;
     mouse.y = e.clientY - test2;

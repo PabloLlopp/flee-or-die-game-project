@@ -55,25 +55,28 @@ class Flashlight {
 
     move(key){
         this.lightRotation();
-        switch (key) {
-            case 'w':
+        
+            if (moveUp)
                 if (this.light[0].y > 10)
                     this.light[0].y -= this.moveY
-                break;
-            case 's':
+            if (moveDown)
                 if (this.light[0].y + this.height < canvas.height) 
                     this.light[0].y += this.moveY
-                break;
-            case 'a':
+                
+            if (moveLeft)
                 if (this.light[0].x > 10)
                     this.light[0].x -= this.moveX
-                break;
-             case 'd':
+                
+            if (moveRight)
                 if (this.light[0].x + this.width < canvas.width)
                     this.light[0].x = this.light[0].x + this.moveX
-                break;
+                
         }
-    }
+
+        
+
+
+    
 
     left() {
         return this.light[0].x ;

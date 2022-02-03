@@ -64,25 +64,23 @@ class Player {
     move(key){
         this.playerRotation();
 
-        switch (key) {
-            case 'w':
-                if (this.y > 10)
-                    this.y -= this.moveY
-                break;
-            case 's':
-                if (this.y + this.height < canvas.height) 
-                    this.y += this.moveY
-                break;
-            case 'a':
-                if (this.x > 10)
-                    this.x -= this.moveX
-                break;
-             case 'd':
-                if (this.x + this.width < canvas.width)
-                    this.x = this.x + this.moveX
-                break;
+        if (moveUp)
+            if (this.y > 10)
+                this.y -= this.moveY
+        if (moveDown)
+            if (this.y + this.height < canvas.height) 
+                this.y += this.moveY
+                
+        if (moveLeft)
+            if (this.x > 10)
+                this.x -= this.moveX
+                
+        if (moveRight)
+            if (this.x + this.width < canvas.width)
+                this.x = this.x + this.moveX
+                
         }
-    }
+    
 
     playerRotation(){
         this.rotation = Math.atan2(-(this.x - mouse.x), -(mouse.y - this.y))
