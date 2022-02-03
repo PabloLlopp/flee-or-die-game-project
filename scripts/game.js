@@ -76,8 +76,7 @@ class Game {
     checkLightCollision(){
         this.enemies.enemyArmy.forEach(enemy =>{
             let enlighted = !(this.flashlight.bottom() < enemy.top() || this.flashlight.top() > enemy.bottom() || this.flashlight.right() < enemy.left() || this.flashlight.left() > enemy.right())
-            if (enlighted) {this.freeze()
-            }
+            if (enlighted) this.freeze()
             else {enemy.move()}
         }
              
@@ -85,11 +84,8 @@ class Game {
     }
 
     freeze(){
-        
-        setInterval(() => {
-            this.enemies.moveX = 0
-            this.enemies.moveY = 0
-        }, 10 * 1000);
+        this.enemies.moveX = 0;
+        this.enemies.moveY = 0;        
     }
 
     drawScore() {

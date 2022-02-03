@@ -47,7 +47,13 @@ class Player {
 
     controlMotion(){
         if (game.frameNumber % 180 === 0){
-            if (this.oldX === this.x && this.oldY === this.y) game.stop()
+            if (this.oldX === this.x && this.oldY === this.y){
+                game.stop();
+                this.ctx.save();
+            this.ctx.fillStyle = "red";
+            this.ctx.font = " bold 20px Supermercado One";
+            this.ctx.fillText(`You need to keep moving`, 110, 250);
+            }
             else {
                 this.oldX = this.x; 
                 this.oldY = this.y;
