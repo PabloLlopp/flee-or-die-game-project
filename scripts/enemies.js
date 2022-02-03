@@ -23,12 +23,16 @@ class Enemies {
   }
 
   createEnemies() {
-    // this.move();
     this.draw();
     this.left();
     this.right();
     this.top();
     this.bottom();
+  }
+
+  draw() {
+    this.ctx.fillStyle = "red";
+    this.ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
   }
 
   move() {
@@ -64,9 +68,5 @@ class Enemies {
   bottom() {
     return this.y + this.height;
   }
-
-  draw() {
-    this.ctx.fillStyle = "red";
-    this.ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
-  }
+  
 }

@@ -6,8 +6,7 @@ class Game {
     this.enemies = enemies;
     this.walls = walls;
     this.frameNumber = null;
-    this.key = null;
-    this.mouse = this.score = 0;
+    this.score = 0;
     this.sum = 0;
     this.playerMotion = [];
   }
@@ -35,16 +34,15 @@ class Game {
 
   play() {
     if (this.frameNumber !== null) {
+      requestAnimationFrame(this.play.bind(this));
       this.frameNumber += 1;
       this.score += this.frameNumber;
       this.checkCollision();
-      this.draw();
-      this.drawScore();
-      requestAnimationFrame(this.play.bind(this));
       this.checkLightCollision();
       this.player.controlMotion();
-      if (this.frameNumber % 180 === 0) this.checkIfPlayerMoves();
       this.move();
+      this.draw();
+      this.drawScore();  
     }
   }
 
@@ -52,17 +50,18 @@ class Game {
     this.ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     // this.walls.draw()
     this.player.draw();
-    this.enemies.randomEnemy(this.frameNumber);
     if (this.flashlight.turnOnLight()) {
-      this.flashlight.draw();
-    }
+        this.flashlight.draw();
+      }
+    this.enemies.randomEnemy(this.frameNumber);
   }
 
-  checkIfPlayerMoves() {
-    /*
-        if (this.playerMotion[0].x === this.playerMotion[1].x && this.playerMotion[0].y === this.playerMotion[1].y){
-            this.stop()
-        } else this.playerMotion[0].shift()*/
+  drawScore() {
+    this.score = Math.floor(this.score / 5);
+    this.ctx.save();
+    this.ctx.fillStyle = "white";
+    this.ctx.font = " bold 18px sans-serif";
+    this.ctx.fillText(`Score: ${this.score} pts`, 20, 20);
   }
 
   checkCollision() {
@@ -97,14 +96,6 @@ class Game {
     this.enemies.moveY = 0;
   }
 
-  drawScore() {
-    this.score = Math.floor(this.score / 5);
-    this.ctx.save();
-    this.ctx.fillStyle = "white";
-    this.ctx.font = " bold 18px sans-serif";
-    this.ctx.fillText(`Score: ${this.score} pts`, 20, 20);
-  }
-
   stop() {
     this.frameNumber = null;
     cancelAnimationFrame(this.frameNumber);
@@ -118,13 +109,9 @@ class Game {
     return true;
   }
 
-  onKey(event) {
-    if (event) this.key = event.key;
-    else this.key = null;
-  }
-
   move() {
     this.player.move(this.key);
     this.flashlight.move(this.key);
   }
+  
 }

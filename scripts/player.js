@@ -2,7 +2,9 @@ class Player {
   constructor(ctx) {
     this.ctx = ctx;
     this.x = 249 - this.width;
-    this.y = 249 - this.height;
+    this.y = 249 - this.height;    
+    this.oldX = 0;
+    this.oldY = 0;
     this.height = 20;
     this.width = 20;
     this.moveX = 10;
@@ -12,8 +14,6 @@ class Player {
     this.rotation = 0;
     this.image = new Image();
     this.image.src = "images/player.png";
-    this.oldX = 0;
-    this.oldY = 0;
   }
 
   draw() {
@@ -25,8 +25,6 @@ class Player {
       -this.image.width / 2,
       -this.image.height / 2
     );
-    // this.ctx.fillStyle = 'yellow'
-    //this.ctx.fillRect(this.x, this.y, this.width, this.height)
     this.ctx.restore();
   }
 
@@ -53,7 +51,7 @@ class Player {
         this.ctx.save();
         this.ctx.fillStyle = "red";
         this.ctx.font = " bold 20px Supermercado One";
-        this.ctx.fillText(`You need to keep moving`, 110, 250);
+        this.ctx.fillText(`You need to keep moving`, 130, 250);
       } else {
         this.oldX = this.x;
         this.oldY = this.y;
@@ -61,9 +59,7 @@ class Player {
     }
   }
 
-  move(key) {
-    this.playerRotation();
-
+  move() {
     if (moveUp) 
       if (this.y > 10) this.y -= this.moveY;
     if (moveDown)
@@ -74,6 +70,8 @@ class Player {
 
     if (moveRight)
       if (this.x + this.width < canvas.width) this.x = this.x + this.moveX;
+
+    this.playerRotation();
   }
 
   playerRotation() {

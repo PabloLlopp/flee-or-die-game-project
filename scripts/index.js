@@ -38,7 +38,6 @@ restartBtn.onclick = () => {
   restartBtn.classList.add("hidden");
   restartBtn.classList.remove("tryAgain");
   ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-  // location.reload()
   game.start();
 };
 
