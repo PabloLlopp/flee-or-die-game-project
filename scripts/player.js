@@ -50,8 +50,8 @@ class Player {
         game.stop();
         this.ctx.save();
         this.ctx.fillStyle = "red";
-        this.ctx.font = " bold 20px Supermercado One";
-        this.ctx.fillText(`You need to keep moving`, 130, 250);
+        this.ctx.font = "bold 20px Supermercado";
+        this.ctx.fillText('You need to keep moving', 130, 250);
       } else {
         this.oldX = this.x;
         this.oldY = this.y;

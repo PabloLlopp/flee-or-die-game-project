@@ -24,8 +24,7 @@ canvas {
 }
 
 .playing {
-  background-image: url("../images/floor.png");
-  background-color: white;
+  background-color: palevioletred;
   cursor: none;
 }
 
