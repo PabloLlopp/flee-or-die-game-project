@@ -7,10 +7,10 @@ canvas.width = 500;
 
 //---------- MUSIC ----------
 
-const audio = new Audio("/music/tune.mp3");
+const audio = new Audio("music/tune.mp3");
 audio.play();
 
-const lose = new Audio("/music/lose.wav");
+const lose = new Audio("music/lose.wav");
 
 // ---------- CLASSES ----------
 
